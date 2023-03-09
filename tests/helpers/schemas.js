@@ -31,15 +31,7 @@ export const formatAjvErrors = (errors = []) => {
         })
         .join(' > ')
 
-      // handle additional properties error specifically since we can call out
-      // which property shouldn't be there
-      let additionalProperties = ''
-
-      if (errorObj.keyword === 'additionalProperties') {
-        additionalProperties = `: additional property is '${errorObj.params.additionalProperty}'`
-      }
-
-      return `at '${schemaErrorPath}': ${errorObj.message}${additionalProperties}`
+      return `at '${schemaErrorPath}': ${errorObj.message}`
     })
     .join('\n  ')
 }
